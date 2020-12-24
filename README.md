@@ -60,4 +60,10 @@ Exposing cells to various factors for them to mutate.
 
 >With regards to synthesised vs. PCRed DNA: It doesn't really matter which you use in synthetic biology. However, cheap synthesis is one of the technologies that enable easier synthetic biology. The idea for the future is that you will be able to synthesise whole plasmids and chromosomes instead of having to "cut and paste" DNA. When that happens physical parts repositories will be obsolete, but they will remain crucial in silico. Cheap synthesis is nice, but doesn't make or brake synthetic biology.
 
-**See Images in Week1.**
+#### Top-down design
+
+In order to deal with challenges arising from complexity of systems, engineers break down the systems into smaller, more manageable pieces hierarchically.
+
+Biology is not necessarily Boolean (digital) as we hope. The cell uses electrical, chemical, and mechanical currencies in non-digital ways. Perhaps we need different paradigms for different components and layers.
+
+**See Images in Week 1.**
