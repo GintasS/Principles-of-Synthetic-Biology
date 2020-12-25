@@ -66,4 +66,80 @@ In order to deal with challenges arising from complexity of systems, engineers b
 
 Biology is not necessarily Boolean (digital) as we hope. The cell uses electrical, chemical, and mechanical currencies in non-digital ways. Perhaps we need different paradigms for different components and layers.
 
-**See Images in Week 1.**
+**Registry of Standard Biological Parts - iGEM registry.**
+
+**See Images in Week 1.** 
+
+## <a name="week2"></a>Week 2
+
+Top-down design: specifying the overall function of a system at a high level, then filling in details through various levels of abstraction, down to the physical implementation of the system.
+
+A system is made of modules, implementing individual functions such as toggles or oscillators. Each module is composed of devices that perform even simple operations such as repression or activation. At the very lowest level we have the physical components such as DNA and proteins. We can model a system at various levels of granularity: the molecular or even atomic level, or at the level of devices.
+
+The process of top down decomposition helps you get at the various levels of abstraction and find a suitable implementation for the system. Again, we start at a high level description. We then think of a slightly more formal description of the system, for example using Boolean algebra, where signals are either on or off (molecules are either present or not). This lets you map the behaviour to an abstract genetic regulatory network (GRN), where genetic components regulate each other through processes like repression and activation. Once you have an abstract GRN, you have to choose the actual genes to fill in the nodes in this regulatory network — the actual repressors and activators. These genes have DNA sequences that you can then assemble together into a physical implementation of the circuit and finally test them in cells.
+
+### The BioCompiler
+
+A line is a piece of DNA.
+Bent arrow - a region of DNA to which polymerase can bind.
+
+aTc — a small molecule inducer, disables the TetR repressor protein from binding its operator.
+
+IPTG — a small molecule inducer, disables the LacI repressor protein from binding its operator.
+
+LISP-like language — LISP is a family of programming languages, famous for its heavy use of parentheses. A statement like (green (sr-latch (aTc) (IPTG))) reads something like "turn green if a function called sr-latch called with the values of aTc and IPTG returns true".
+
+SR-latch — a bistable element that can be set (S) and reset (R). When the set signal is present, the latch is considered on and remains on until the reset input is seen, when the latch turns off. You can turn the latch on again by sending a set signal. Thus it functions as a 1-bit storage element by remembering whether the last input was S or R.
+
+The BioCompiler is able to optimize combinatorial logic circuits (circuits without any state or memory), stateful logic circuits (like the SR latch, which has memory), and even systems with various spatial properties, such as pattern generators.
+
+#### CAD for biology
+
+What should we characterize? What can we characterize? For enzyme engineering, we would want to know the rates of enzymes. For synthetic biologists, measuring binding rates for transcription factors and DNA in vivo (in cells) is hard in high throughput. However, people have developed good methods for characterizing promoters, to measure the **rate of production from promoters.** We could do it with quantitative PCR (qPCR), for example, though it is medium throughput. RNA sequencing (RNAseq), could be used to see how whole pathways are affected by a circuit.
+
+#### Top-down design B cells
+
+In this example of top-down design we look at a system where we want to engineer stem cells to produce β cells in Type I diabetes patients. In Type I diabetes, β cells are killed by the immune system. At a high level, we want a system that maintains a population of β cells using auto-regulated differentiation of stem cells (homeostasis of the β cell population).
+
+To achieve this, we can have stem cells that auto-regulate their own division. If there are too many, the division is inhibited. At the same time, these stem cells can differentiate through various stages into β cells, which are then removed by the immune system. We add auto-regulation to the differentiation stage to control its rate: too many β cells will cause there to be less differentiation.
+
+#### Challenges to design
+
+As a new engineering discipline we need to create new rules and standards! This should happen in a cycle of designing, building, testing and learning. 
+We need to do this in a systematic and unified way across laboratories and institutions to progress as a field.
+
+### DNA synthesis and assembly 
+
+DNA synthesis and assembly is what lets us go from a concept of some behavior to an actual implementation, a genetic circuit.
+
+DNA is made of nucleotides and can be built (assembled) from the bottom up. We can easily buy oligonucleotides, short (tens to a few hundred bases) single-stranded oligomers of DNA. These can be composed to make genes (typically 1-10 thousand basepairs, bp). Pathways can be created from sets of genes related to some function. Whole genomes comprise of many pathways and genes working together to give life to the cell.
+
+Progress made in DNA synthesis and assembly leads to progress in synthetic biology, since much of synthetic biology is dependent on the ability to encode circuits and systems on DNA.
+
+#### Ways of joining DNA
+- Chemically adding nucleotides
+- Ligase
+- Polymerization
+- Recombination
+
+#### Traditional cloning
+
+We typically use plasmids as a delivery vector of choice for our circuits. These are circular pieces of DNA that typically have a few useful features. An origin of replication allows us to propagate the plasmid in bacteria. An antibiotic resistance gene allows us to select for bacteria that have the plasmid, it acts as a marker for the presence of the plasmid.
+
+### BioBricks
+
+The BioBrick assembly standard is an extension of traditional cloning that allows you to do modular, hierarchical assembly: a BioBrick construct can be assembled with any other BioBrick construct to create a new BioBrick. It is based on restriction enzymes, but these restriction enzymes are always the same: you only need EcoRI, XbaI, SpeI, and PstI. This standardizes the process of cloning; rather than designing each restriction reaction for every construct, the set of reactions as well as the relevant DNA sequences are predefined.
+
+Each sequence of interest in a BioBrick is flanked on the left by EcoRI (E) and XbaI (X) and on the right by SpeI (S) and PstI (P). If you have a BioBrick, you can append or prepend another BioBrick to it by choosing which enzymes you cut the BioBricks with. You then ligate these digested products, but the scar that forms from the ligation of the cut sites is no longer a recognition sequence for E/X/S/P.
+
+#### Synthesis of long DNA
+
+How can we make sequences that don't exist in nature as we want? In 1979 it was shown that you can create a completely new double-stranded sequence of DNA by starting from short oligonucleotides that have matching bases that can come together and anneal in a one-pot reaction. Ligation joins the oligonucleotide backbones to create a double-stranded sequence. Feel free to read Khorana's paper describing the total synthesis of a gene from oligos (1979) in which a 207 bp piece of DNA was created.
+
+In 1986 it was shown that you can use PCR of partially overlapping oligos to create even longer sequences (374 bp). 
+
+#### Misc
+
+Having libraries of parts lets us reuse components! If we find a good promoter, we would likely want to re-use that promoter in various circuits that we build.
+
+**See Images in Week 2.** 
