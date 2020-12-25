@@ -143,3 +143,40 @@ In 1986 it was shown that you can use PCR of partially overlapping oligos to cre
 Having libraries of parts lets us reuse components! If we find a good promoter, we would likely want to re-use that promoter in various circuits that we build.
 
 **See Images in Week 2.** 
+
+## <a name="week3"></a>Week 3
+
+What are the elements and parts in synthetic biology? Cells are made of protein, DNA, metabolites and other molecules, so at a first pass, these could be the parts of synbio. However, the conceptual meaning of a protein is not really in its structure, but rather in its function. This suggests that a good, practical definition for a part is likely not going to involve the structure of a protein.
+
+This concept of parts and interfaces (connections) between them is key to successful engineering principles. In software engineering, a great programming platform is one that easily lets you create small reusable units of code (parts) that can be as easily composed together using well-specified interfaces.
+
+#### Parts in gene expression
+
+We often depict a piece of DNA as a horizontal line with some annotations. In a public database of genomes you will often see annotations for the coding sequence (CDS) of a gene — that's one candidate for a part in a genome, since it's useful for biologists. But there's more to a gene than just the coding sequence!
+
+For a promoter to wholly encapsulate its function, it must be true that it can be removed from the context it is in and put in a new one, and still function.
+
+#### Desirables for parts
+
+Ideally, we would have things like expression cassettes, which can be insulated from each other and are comprised of all the things we need to regulate a gene and the gene itself. Each component would be chosen from a library of characterized elements to suit our needs, regardless of the context.
+
+- Completenesss: I can make any function.
+- Scalability: I can make complex circuits.
+- Homogeneity: I can measure once and it applies to the whole family.
+- Composability: There are standards for part connection such that unit function is maintained or predicatble modified upon attachment.
+- Invariance: And it holds in different contexts.
+
+#### What is a part?
+
+- Parts should encapsulate a function. How each functional unit is physically implemented is initially less important than its overall behaviour.
+- Encapsulation should preserve function when connected to other parts. Functions, when properly defined, have formal specifications of the input and output dependencies of the
+device. So that there are formal device boundaries.
+- Parts may be made up of other parts. The definition of parts as functions allows a hierarchical view of design in which complex functions are compositions of more
+elementary functions with the formal inputs and outputs made explicit.
+- Parts are physical elements that can be assembled in standard ways?
+
+Why can we make abstractions when modeling biochemical systems? When we think about gene expression in bacteria in detail, there are a lot of interactions polymerase can go through: it could bump into random molecules before it binds the  σ -factor and forms the holoenzyme; this holoenzyme might interact with various other molecules in the cell before it binds DNA and finds the promoter; the promoter can bump into other enzymes etc. We don't always really need to capture all of this "noise", similar to how we don't need to model the silicon physics of a transistor when designing chips.
+
+To define what a part means, let's look at what a designed system — which we will want to use parts in — does. Any design moves the system through a programmed series of states. This progression is the result of many elementary processes and functions working together. Hence, it is useful to define a part as being one of these processes (functions), instead of some physical element such as a molecule or piece of DNA.
+
+**The state of a system can be described chemically,** for example how many molecules of something there are, and where they are; what the temperature at some particular location is; what the volume of some cell compartment is. The state of a whole system could thus be described as a vector containing these numbers. **Processes — our parts — change this state by converting molecules, creating new ones, destroying them, or transporting them.**
