@@ -180,3 +180,27 @@ Why can we make abstractions when modeling biochemical systems? When we think ab
 To define what a part means, let's look at what a designed system — which we will want to use parts in — does. Any design moves the system through a programmed series of states. This progression is the result of many elementary processes and functions working together. Hence, it is useful to define a part as being one of these processes (functions), instead of some physical element such as a molecule or piece of DNA.
 
 **The state of a system can be described chemically,** for example how many molecules of something there are, and where they are; what the temperature at some particular location is; what the volume of some cell compartment is. The state of a whole system could thus be described as a vector containing these numbers. **Processes — our parts — change this state by converting molecules, creating new ones, destroying them, or transporting them.**
+
+**See Images in Week 3.** 
+
+## <a name="week4"></a>Week 4
+
+To remind you, for ease of design, we define parts as processes. While we manufacture with DNA, it is not a good substrate for designing. We want to design with abstractions that allow us to separate functions and compose modules with ease — something we can do with processes but not physical pieces of DNA.
+
+We want to design with functions and not model details of the processes underlying those functions unless we have to. 
+
+The essential function of an enzyme is its activity: it converts one molecule to some other molecule.
+
+Parts are processes. Processes are what we want to design with. These processes take state variables — say, the concentration of something — and turn them into a rate of change of the state variable. An enzyme might carry out this process, but it is not often useful for designing with; an enzyme won't "work" if the substrate is not present! Designing with processes in mind helps us capture this dependency with ease.
+
+Compositors aggregate the effects of parts. These are the total rates of change of some state variable, across the whole system in the framework of ordinary differential equations (ODEs). We use ODEs to describe the dynamics of well-mixed biochemical systems mathematically. There is one compositor for each state variable, for example the concentration of each distinguishable chemical species. Pyruvate (the anion of pyruvic acid, an important metabolite) in the cytosol is separated from pyruvate in the mitochondrion and we can essentially distinguish them!
+
+#### Positive and Negative feedbacks - Autoregulatory feedback
+
+Positive feedback — when the protein promotes its own production — might sound like a good thing, but turns out this is not what we are looking for; we'll see later that positive feedback can actually decrease the response time!
+
+Negative feedback — when the protein represses its own production — is what we need! We'll see how this works in the next section.
+
+Negative autoregulation is one of the most common motifs one can find in nature.  In negative autoregulation (NAR) the production of output of a system is inhibited by the output itself, a form of negative feedback.
+
+In positive feedback, the protein promotes its own production.
