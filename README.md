@@ -2,12 +2,25 @@
 
 ## Jump to...
 
+  - [Glossary](#glossary)
   - [Week 1](#week1)
   - [Week 2](#week2)
   - [Week 3](#week3)
   - [Week 4](#week4)
   - [Week 5](#week5)
   - [Week 6](#week6)
+
+
+## <a name="glossary"></a>Glossary
+
+Term | Explanation
+------------ | -------------
+activator | a protein that binds DNA and promotes transcription of nearby DNA (often directionally, on one side of the binding site, but sometimes bidirectionally). An activator can do this by e.g. recruiting RNA polymerase, opening chromatin to allow access to the promoter region by RNAP (in eukaryotes), blocking a repressor from binding.
+aggregator | something that sums up inputs. For example, the  ∑  operator is a mathematical aggregator, the OR gate is a logical aggregator with a limit (it can only sum up at most one input), the AND gate is a logical aggregator with a limit as well as a threshold (addition is performed only if all inputs are present, in which the output is still only 1).
+AND gate | a digital logic element that produces a high output (1, true) if and only if all inputs (typically there are two) are high; otherwise, a low output (0, false) is produced
+
+
+
   
 ## <a name="week1"></a>Week 1
 
@@ -204,3 +217,5 @@ Negative feedback — when the protein represses its own production — is what 
 Negative autoregulation is one of the most common motifs one can find in nature.  In negative autoregulation (NAR) the production of output of a system is inhibited by the output itself, a form of negative feedback.
 
 In positive feedback, the protein promotes its own production.
+
+**See Images in Week 4.** 
