@@ -212,3 +212,33 @@ Negative autoregulation is one of the most common motifs one can find in nature.
 In positive feedback, the protein promotes its own production.
 
 **See Images in Week 4.** 
+
+## <a name="week5"></a>Week 5
+
+Combinational logic refers to digital logic that carries out a function for which the output depends only on the current inputs (that is, it has no state). The digital abstraction simplifies our thinking of system design and enables us to create sophisticated devices by using simple digital elements with properties such as signal restoration, which enable them to be easily composed together.
+
+#### The NOT gate
+
+Let's consider the NOT gate, also known as an inverter. The inverter turns an input of 0 to an output of 1 and an input of 1 to an output of 0.
+
+To implement this genetically, we first need to define our signals. One convenient way to define a signal is to say that a signal is the concentration of a chemical species, for example a protein. If the concentration of a protein in a cell is low, it represents the signal 0 and if the concentration is high it represents the signal 1. This is similar to electronics, where a low voltage typically represents a 0 and a high voltage a 1. Note how in both examples we are converting a continuous value to a discrete one.
+
+There are other signals that synthetic biologists use, for example PoPS ([RNA] polymerases per second) or RiPS (ribosomes per second) could be defined as input and output signals. These signals show the rate at which these enzymes move along the DNA or RNA, as appropriate. A strong promoter causes a high PoPS along the gene. A repressor reduces the PoPS of the gene it regulates.
+
+#### The IMPLIES gate
+
+The NOT gate can be enhanced with functionality by introducing an inducer to the repressor. A common example of an inducer is a small molecule that inhibits the repressor by binding it; this binding causes the repressor to no longer function as an inhibitor of gene expression. For example, a repressor protein bound by an inducer might lose its ability to bind DNA.
+
+### Cascades
+
+In order for a digital abstraction of transcriptional regulation to hold, it must be true that activators and repressors are expressed either at high ("ON") or low ("OFF") levels. But this notion begs the question of what concentration threshold each regulatory protein must be above/below to ensure that we actually get digital behavior. Such thresholds often depend on the activity of the output protein, whether it is a transcription factor, an enzyme, or involved in some other process.
+
+#### Functional Cascade
+
+It would be ideal to start with individual parts, predict their behavior when composed together, build a cascade, and have it work right off the bat. Unfortunately, as we have seen in the previous sections, this goal is still very difficult to realize. Taking the opposite approach, a team in Ron's laboratory managed to build functional cascade with parts on hand, then decided to go back and analyze its properties with regards to sensitivity, signal restoration, noise propagation/attenuation, and timing delay. First, they started with a simple system in which the Tet repressor (TetR) binds and represses transcription of EYFP. TetR is sensitive to the small molecule aTc, a homolog of tetracycline. In the presence of aTc, TetR's DNA binding domain is destabilized, and TetR can no longer bind the Tet operator (TetO) sequence in the pL(tet) promoter.
+
+One pervasive issue in synthetic biology is that we don't know how every single element of our circuits interacts with every other element (or with the cell for that matter). When building electronic circuits, electrical engineers can use wires to direct current where it needs to go. Such wires are not present in biology - and while we like to assume that we have some aspect of modularity/orthogonality with our parts, that's not actually the case. Thus, we need to do better analysis of parts to predict how they may interact with each other in order to better model higher-order circuits.
+
+One important question when analyzing our functional cascade is how the noise propagates. By looking at just the mean behavior of cells expressing the cascade, we miss some of the underlying reasons why the cascade might fail. One of the most common measures of noise is the coefficient of variation ( CV ), which is given by the ratio of a sample's standard deviation ( s2 ) to its mean ( X¯¯¯¯ ):
+
+The effect of the noise on our function can depend on the design specification. For example, if all we care about is getting cells to express highly or lowly, then the noise in the transition region may not matter so much. However, there may be cases when we do care about the transition region - for instance if we would like to have some aspect of tunability or analog behavior in our circuits. If we care about the synchronization of cells as they pass through some transition region from low to high output (eg during embryogenesis/development), then the noise during this transit will be a major problem.
