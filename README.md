@@ -205,7 +205,7 @@ In positive feedback, the protein promotes its own production.
 
 **See Images in Week 4.** 
 
-## <a name="week5"></a>Week 5: Simple digital devices & Cascades
+## Week 5: Simple digital devices & Cascades
 
 Combinational logic refers to digital logic that carries out a function for which the output depends only on the current inputs (that is, it has no state). The digital abstraction simplifies our thinking of system design and enables us to create sophisticated devices by using simple digital elements with properties such as signal restoration, which enable them to be easily composed together.
 
@@ -227,7 +227,7 @@ In order for a digital abstraction of transcriptional regulation to hold, it mus
 
 #### Functional Cascade
 
-It would be ideal to start with individual parts, predict their behavior when composed together, build a cascade, and have it work right off the bat. Unfortunately, as we have seen in the previous sections, this goal is still very difficult to realize. Taking the opposite approach, a team in Ron's laboratory managed to build functional cascade with parts on hand, then decided to go back and analyze its properties with regards to sensitivity, signal restoration, noise propagation/attenuation, and timing delay. First, they started with a simple system in which the Tet repressor (TetR) binds and represses transcription of EYFP. TetR is sensitive to the small molecule aTc, a homolog of tetracycline. In the presence of aTc, TetR's DNA binding domain is destabilized, and TetR can no longer bind the Tet operator (TetO) sequence in the pL(tet) promoter.
+It would be ideal to start with individual parts, predict their behavior when composed together, build a cascade and have it work right off the bat. Unfortunately, as we have seen in the previous sections, this goal is still very difficult to realize. Taking the opposite approach, a team in Ron's laboratory managed to build the functional cascade with parts on hand, then decided to go back and analyze its properties with regards to sensitivity, signal restoration, noise propagation/attenuation, and timing delay. First, they started with a simple system in which the Tet repressor (TetR) binds and represses transcription of EYFP. TetR is sensitive to the small molecule aTc, a homolog of tetracycline. In the presence of aTc, TetR's DNA binding domain is destabilized, and TetR can no longer bind the Tet operator (TetO) sequence in the pL(tet) promoter.
 
 One pervasive issue in synthetic biology is that we don't know how every single element of our circuits interacts with every other element (or with the cell for that matter). When building electronic circuits, electrical engineers can use wires to direct current where it needs to go. Such wires are not present in biology - and while we like to assume that we have some aspect of modularity/orthogonality with our parts, that's not actually the case. Thus, we need to do better analysis of parts to predict how they may interact with each other in order to better model higher-order circuits.
 
@@ -237,7 +237,7 @@ The effect of the noise on our function can depend on the design specification. 
 
 **See Images in Week 5.** 
 
-## <a name="week6"></a>Week 6: Hazards & Feed-forward motifs
+## Week 6: Hazards & Feed-forward motifs
 
 ### The Cancer classifier
 
@@ -249,7 +249,7 @@ One promising application of synthetic biology is in precision medicine. Here, w
 
 As Adam put it, many common cancers have been "profiled to death" in recent years. For example, check out The Cancer Genome Atlas (TCGA - link to their data portal). For each cancer studied, researchers have analyzed samples from hundreds of real patients. They have collected data on the genome sequences, single nucleotide polymorphisms (SNPs), DNA methylation patterns, and mRNA/miRNA transcription profiles of tumor samples from all these patients and have even provided matched clinical data. This provides a wealth of **biomarkers** that a synthetic biologist could use in the design of sensors for classifying cancer.
 
-Perhaps the easiest mammalian cell property to measure are RNA-related and protein-related. This is because RNA and proteins typically make up the physical parts of our synthetic circuits. We can build sensors that interact with these molecules and then use the resulting state change from binding to issue a signal that indicates that a biomarker has been detected. Combining the outputs of these sensors allows us to detect a pattern of gene expression that denotes a cancerous cell. One important question is how many genes should we have to detect? It has been estimated by some studies that there are upwards of 30,000 genes in the human genome - even using just 1% of the genome means we would have to build hundreds of sensors and link all of their outputs together into one massive logic function!
+Perhaps the easiest mammalian cell property to measure is RNA-related and protein-related. This is because RNA and proteins typically make up the physical parts of our synthetic circuits. We can build sensors that interact with these molecules and then use the resulting state change from binding to issue a signal that indicates that a biomarker has been detected. Combining the outputs of these sensors allows us to detect a pattern of gene expression that denotes a cancerous cell. One important question is how many genes should we have to detect? It has been estimated by some studies that there are upwards of 30,000 genes in the human genome - even using just 1% of the genome means we would have to build hundreds of sensors and link all of their outputs together into one massive logic function!
 
 In reality, we only need about 3-5 genes differentially expressed in cancer and healthy cells to tell the difference.
 
@@ -261,18 +261,18 @@ Typically, we can take a 10-fold change from normal is a good metric for minimum
 
 In this segment, we discuss the strategy of using a cascade of activators to delay circuit output. In the previous segment, we discussed a problem of speed mismatches between different signalling pathways feeding into a logic gate with multiple inputs. In particular, we discussed a situation in which the expression of an activator branch signal was much more rapid than the repressing branch signal.
 
-If a certain branch is too fast, we can add more activators in series to delay the signal, allowing time for the other branch to propagate its signal. In the video above, we consider a modified activator branch that creates a delay. Note: the input into the branch (formerly  B ) is now represented by  R2  to emphasize that the input into the cascade is a repressor rather than an activator.
+If a certain branch is too fast, we can add more activators in series to delay the signal, allowing time for the other branch to propagate its signal. In the video above, we consider a modified activator branch that creates a delay. Note: the input into the branch (formerly B ) is now represented by R2 to emphasize that the input into the cascade is a repressor rather than an activator.
 
 #### Cascades wrap-up
 
-In this paper, the researchers built a classifier circuit to determine if cells are HeLa or not. The core functionality of this circuit is RNA interference, a phenomena seen in most eukaryotic cells. This circuit will be discussed more in depth later in the course when we talk about RNA circuits.
+In this paper, the researchers built a classifier circuit to determine if cells are HeLa or not. The core functionality of this circuit is RNA interference, a phenomenon seen in most eukaryotic cells. This circuit will be discussed more in depth later in the course when we talk about RNA circuits.
 
 The classifier works by using microRNA (miRNA) as biomarkers to directly repress circuit elements. If any marker miRNAs are high in the cell, they will bind target mRNA in the circuit, repressing translation and facilitating mRNA degradation. The researchers identified two sets of miRNAs: "low" and "high".
 
 "Low" miRNAs were identified as being expressed lowly in HeLa cells but not other cell types.
 Conversely, "high" miRNAs are high in HeLa cells but not in others.
 
-First, Ron discussed how the HeLa classifier has been adapted for a breast cancer model and is being used to drive replication of the oncolytic herpes simplex virus (HSV)-1.
+First, Ron discussed how the HeLa classifier had adapted for a breast cancer model and is being used to drive replication of the oncolytic herpes simplex virus (HSV)-1.
 
 What we alluded to in the previous segment was a hazard in the HeLa classifier. In mismatched cells, the high miRNAs will not be high, and thus the repressor will be expressed and repress the output. However, as we have seen before, repression cascades can lead to a hazard because the initial levels of the repressor are low. Thus, to improve the circuit, the researchers added an activation element to the circuit and a hybrid promoter for the output, similar to what we did in the previous section with our generic classifier.
 
@@ -286,21 +286,21 @@ What we alluded to in the previous segment was a hazard in the HeLa classifier. 
 
 #### Engineering Pulse Characteristics
 
-In this segment, Ron discussed the experimental data for the pulse generator system and a model for the pulse characteristics. The experimental data (presented in the left panel) is the result of testing several different pulse generator constructs. High-throughput genetic assembly methods allow the creation of many circuit variants, which -- due to the current uncertainty in biological system design -- is one of the best ways to get functional genetic circuits.
+In this segment, Ron discussed the experimental data for the pulse generator system and a model for the pulse characteristics. The experimental data (presented in the left panel) is the result of testing several different pulse generator constructs. High-throughput genetic assembly methods allow the creation of many circuit variants, which - due to the current uncertainty in biological system design -- is one of the best ways to get functional genetic circuits.
 
-Two aspects of the pulse response were emphasized: the amplitude (or gain) and duration. The initial design that was attempted showed no pulse response at all. In order to understand why, the researchers built a mathematical model to describe the system, and ultimately used it to identify the key parameters affecting the pulse gain. The pulse gain is the amplitude of the pulse response relative to the background levels of  GFP  (averaged for all cells).
+Two aspects of the pulse response were emphasized: the amplitude (or gain) and duration. The initial design that was attempted showed no pulse response at all. In order to understand why, the researchers built a mathematical model to describe the system and ultimately used it to identify the key parameters affecting the pulse gain. The pulse gain is the amplitude of the pulse response relative to the background levels of GFP (averaged for all cells).
 
 ### Nature's devices
 
-In the "development" of regulatory networks in cells, the designer is evolution. We know that due to the driver of natural selection / survival of the fittest, organisms are not composed of completely random networks; the constant pressure to survive and be efficient means that only certain network structures are selected for or **enriched**. We seek to identify these common patterns of network connections (topologies) because they are likely to have useful functionalities.
+In the "development" of regulatory networks in cells, the designer is evolution. We know that due to the driver of natural selection/survival of the fittest, organisms are not composed of completely random networks; the constant pressure to survive and be efficient means that only certain network structures are selected for or **enriched**. We seek to identify these common patterns of network connections (topologies) because they are likely to have useful functionalities.
 
-So far, there have been two major approaches to studying regulatory networks in cells. In the **bottom-up** or reductionist approach, knockout or overexpression of particular elements is performed to study the relative increase/decrease in expression of downstream elements in a pathway or interaction network. So if we wanted to understand the interaction between  X  and  Y , we could knockout  X  and observe the expression of  Y . If  Y  increased in its expression, then we could hypothesize that  X⊣Y .
+So far, there have been two major approaches to studying regulatory networks in cells. In the **bottom-up** or reductionist approach, knockout or overexpression of particular elements is performed to study the relative increase/decrease in expression of downstream elements in a pathway or interaction network. So if we wanted to understand the interaction between X and Y, we could knockout X and observe the expression of Y. If Y increased in its expression, then we could hypothesize that X⊣Y.
 
 #### Coherent feed-forward loops (cFFLs)
 
 Let us define a feed-forward loop as a network motif where one node regulates two or more branches that later converge at a downstream node. Simply put, feed-forward loops are defined by multiple edges or unique paths connecting two nodes. In their work, Shmoolik and Uri classified all different types of FFLs with three elements (the simplest possible FFLs).
 
-Coherent feed-forward loops (cFFLs) are FFLs with consistent logic from one branching node to the other. That is: if one branch is outputting a "HIGH" signal, the other branch should also ultimately produce a "HIGH" signal (or both branches produce a "LOW" signal). Let's examine a couple of the coherent FFLs in the segment video above to cement this notion. 
+Coherent feed-forward loops (cFFLs) are FFLs with consistent logic from one branching node to the other. That is: if one branch is outputting a "HIGH" signal, the other branch should also ultimately produce a "HIGH" signal (or both branches produce a "LOW" signal.) Let's examine a couple of the coherent FFLs in the segment video above to cement this notion. 
 
 #### Incoherent feed-forward loops (iFFLs)
 
@@ -308,7 +308,7 @@ In this segment, we discuss incoherent feed-forward loops (iFFLs). In these circ
 
 ### Modeling a cFFL
 
-As we have seen in the examples above, the biggest uses of cFFLs are noise rejection and delay. But what do we need for these functions? First, we need sigmoidy in transfer functions for all activation and repression relationships. This makes the response of  C  to  B  be ~zero for low expression values of  B . Small variation in  A  will then not cause  C  to be expressed, because it will not sufficiently activate  B .
+As we have seen in the examples above, the biggest uses of cFFLs are noise rejection and delay. But what do we need for these functions? First, we need sigmoid in transfer functions for all activation and repression relationships. This makes the response of C to B be ~zero for low expression values of B . Small variation in A will then not cause C to be expressed, because it will not sufficiently activate B .
 
 In this segment, Adam wraps up the discussion of FFLs with some thoughts about motifs, which will lead us into the next exciting topic — the toggle switch!
 
