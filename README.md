@@ -13,9 +13,9 @@
 
 ## Glossary
 
+<a href='https://courses.edx.org/courses/course-v1:MITx+20.305x_2+1T2017/glossary/' target='_blank'>Glossary url</a>
 
-
-## Week 1: Introduction & Top-down design
+## <a name="week1"></a>Week 1: Introduction & Top-down design
 
 We might be able to program cells in the same way we program computers.
 The computer might be able to translate these high-level biological programs into say biological regulatory networks.
@@ -76,7 +76,7 @@ Biology is not necessarily Boolean (digital) as we hope. The cell uses electrica
 
 **See Images in Week 1.** 
 
-## Week 2: Top-down design & decomposition
+## <a name="week2"></a>Week 2: Top-down design & decomposition
 
 Top-down design: specifying the overall function of a system at a high level, then filling in details through various levels of abstraction, down to the physical implementation of the system.
 
@@ -142,7 +142,7 @@ Having libraries of parts lets us reuse components! If we find a good promoter, 
 
 **See Images in Week 2.** 
 
-## Week 3: Parts and composition
+## <a name="week3"></a>Week 3: Parts and composition
 
 What are the elements and parts in synthetic biology? Cells are made of protein, DNA, metabolites and other molecules, so at a first pass, these could be the parts of synbio. However, the conceptual meaning of a protein is not really in its structure, but rather in its function. This suggests that a good, practical definition for a part is likely not going to involve the structure of a protein.
 
@@ -181,7 +181,7 @@ To define what a part means, let's look at what a designed system — which we w
 
 **See Images in Week 3.** 
 
-## Week 4: Gene expression and regulation & Autoregulatory feedback
+## <a name="week4"></a>Week 4: Gene expression and regulation & Autoregulatory feedback
 
 To remind you, for ease of design, we define parts as processes. While we manufacture with DNA, it is not a good substrate for designing. We want to design with abstractions that allow us to separate functions and compose modules with ease — something we can do with processes but not physical pieces of DNA.
 
@@ -205,7 +205,7 @@ In positive feedback, the protein promotes its own production.
 
 **See Images in Week 4.** 
 
-## Week 5: Simple digital devices & Cascades
+## <a name="week5"></a>Week 5: Simple digital devices & Cascades
 
 Combinational logic refers to digital logic that carries out a function for which the output depends only on the current inputs (that is, it has no state). The digital abstraction simplifies our thinking of system design and enables us to create sophisticated devices by using simple digital elements with properties such as signal restoration, which enable them to be easily composed together.
 
@@ -237,7 +237,7 @@ The effect of the noise on our function can depend on the design specification. 
 
 **See Images in Week 5.** 
 
-## Week 6: Hazards & Feed-forward motifs
+## <a name="week6"></a>Week 6: Hazards & Feed-forward motifs
 
 ### The Cancer classifier
 
