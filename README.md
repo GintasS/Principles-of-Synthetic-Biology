@@ -15,7 +15,7 @@
 
 <a href='https://courses.edx.org/courses/course-v1:MITx+20.305x_2+1T2017/glossary/' target='_blank'>Glossary url</a>
   
-## <a name="week1"></a>Week 1
+## <a name="week1"></a>Week 1: Introduction & Top-down design
 
 We might be able to program cells in the same way we program computers.
 Computer might be able to translate these high level biological programs into say biological regulatory networks.
@@ -76,7 +76,7 @@ Biology is not necessarily Boolean (digital) as we hope. The cell uses electrica
 
 **See Images in Week 1.** 
 
-## <a name="week2"></a>Week 2
+## <a name="week2"></a>Week 2: Top-down design & decomposition
 
 Top-down design: specifying the overall function of a system at a high level, then filling in details through various levels of abstraction, down to the physical implementation of the system.
 
@@ -150,7 +150,7 @@ Having libraries of parts lets us reuse components! If we find a good promoter, 
 
 **See Images in Week 2.** 
 
-## <a name="week3"></a>Week 3
+## <a name="week3"></a>Week 3: Parts and composition
 
 What are the elements and parts in synthetic biology? Cells are made of protein, DNA, metabolites and other molecules, so at a first pass, these could be the parts of synbio. However, the conceptual meaning of a protein is not really in its structure, but rather in its function. This suggests that a good, practical definition for a part is likely not going to involve the structure of a protein.
 
@@ -189,7 +189,7 @@ To define what a part means, let's look at what a designed system — which we w
 
 **See Images in Week 3.** 
 
-## <a name="week4"></a>Week 4
+## <a name="week4"></a>Week 4: Gene expression and regulation & Autoregulatory feedback
 
 To remind you, for ease of design, we define parts as processes. While we manufacture with DNA, it is not a good substrate for designing. We want to design with abstractions that allow us to separate functions and compose modules with ease — something we can do with processes but not physical pieces of DNA.
 
@@ -213,7 +213,7 @@ In positive feedback, the protein promotes its own production.
 
 **See Images in Week 4.** 
 
-## <a name="week5"></a>Week 5
+## <a name="week5"></a>Week 5: Simple digital devices & Cascades
 
 Combinational logic refers to digital logic that carries out a function for which the output depends only on the current inputs (that is, it has no state). The digital abstraction simplifies our thinking of system design and enables us to create sophisticated devices by using simple digital elements with properties such as signal restoration, which enable them to be easily composed together.
 
@@ -242,3 +242,84 @@ One pervasive issue in synthetic biology is that we don't know how every single 
 One important question when analyzing our functional cascade is how the noise propagates. By looking at just the mean behavior of cells expressing the cascade, we miss some of the underlying reasons why the cascade might fail. One of the most common measures of noise is the **coefficient of variation** ( CV ), which is given by the ratio of a sample's standard deviation ( s2 ) to its mean ( X¯¯¯¯ ):
 
 The effect of the noise on our function can depend on the design specification. For example, if all we care about is getting cells to express highly or lowly, then the noise in the transition region may not matter so much. However, there may be cases when we do care about the transition region - for instance if we would like to have some aspect of tunability or analog behavior in our circuits. If we care about the synchronization of cells as they pass through some transition region from low to high output (eg during embryogenesis/development), then the noise during this transit will be a major problem.
+
+**See Images in Week 5.** 
+
+## <a name="week6"></a>Week 6: Hazards & Feed-forward motifs
+
+### The Cancer classifier
+
+We desire to make abstract representations of parts, and to be able to use these abstractions to define modules that can be reliably composed to make any system. As an example, we considered a simple cascade of transcriptional repressors. We discussed how we could make models for the individual repressor parts, then parameterize these models in order to find some mathematical description of the system. This could then be used to try to simulate the effect of adding multiple parts together in a cascade. In terms of models, we discussed the benefits/drawbacks of having a detailed, physical, **mechanistic model** vs a high-level **phenotypic model** where mechanisms are not used.
+
+Another major topic we discussed was how to characterize modules. First, we must consider the chassis organism being used - is it prokaryotic or eukaryotic?, what species?, etc. A powerful way to analyze modules is in terms of their **input-output behavior**. We accomplished this by varying inducer given to cells and measuring the output of the circuit, represented by a fluorescent protein. Ideally, we could use input-output matching to predict the behavior of several composed parts, but unfortunately we aren't quite there yet.
+
+One promising application of synthetic biology is in precision medicine. Here, we discuss a circuit that is designed to classify cells as cancerous or not. This was actually implemented in a collaboration between Ron's and Yakovi Benenson's laboratories, in which a circuit was made to classify cells as HeLa (the most widely used cancer cell line) or human embryonic kidney (HEK) cells (a poplar and well-studied cell line used in cell biology research).
+
+As Adam put it, many common cancers have been "profiled to death" in recent years. For example, check out The Cancer Genome Atlas (TCGA - link to their data portal). For each cancer studied, researchers have analyzed samples from hundreds of real patients. They have collected data on the genome sequences, single nucleotide polymorphisms (SNPs), DNA methylation patterns, and mRNA/miRNA transcription profiles of tumor samples from all these patients and have even provided matched clinical data. This provides a wealth of **biomarkers** that a synthetic biologist could use in the design of sensors for classifying cancer.
+
+Perhaps the easiest mammalian cell property to measure are RNA-related and protein-related. This is because RNA and proteins typically make up the physical parts of our synthetic circuits. We can build sensors that interact with these molecules and then use the resulting state change from binding to issue a signal that indicates that a biomarker has been detected. Combining the outputs of these sensors allows us to detect a pattern of gene expression that denotes a cancerous cell. One important question is how many genes should we have to detect? It has been estimated by some studies that there are upwards of 30,000 genes in the human genome - even using just 1% of the genome means we would have to build hundreds of sensors and link all of their outputs together into one massive logic function!
+
+In reality, we only need about 3-5 genes differentially expressed in cancer and healthy cells to tell the difference.
+
+One important question to ask is what does high vs low mean, especially in the context of differential gene expression in a disease such as cancer? There is absurd heterogeneity in cancer. Between two people with the same type of cancer, the profiles of gene expression between their cancers can be wildly different for many proteins. Even cells that are both a part of the **same tumor** can have wildly different expression levels! This presents a problem when attempting to detect cancer biomarkers, and is something that we have to consider when designing circuits to do multi-input sensing.
+
+Typically, we can take a 10-fold change from normal is a good metric for minimum difference between a "normal" and transformed gene state. While this is generally a large enough difference, we really need to consider the **mean and variance** of expression in as many cells as possible in tumors from different people. If a 10-fold increase in expression is within the normal range of gene expression for a healthy adult, then we will need our biomarker threshold to, say, 100-fold above normal.
+
+#### Comparison of cascades
+
+In this segment, we discuss the strategy of using a cascade of activators to delay circuit output. In the previous segment, we discussed a problem of speed mismatches between different signalling pathways feeding into a logic gate with multiple inputs. In particular, we discussed a situation in which the expression of an activator branch signal was much more rapid than the repressing branch signal.
+
+If a certain branch is too fast, we can add more activators in series to delay the signal, allowing time for the other branch to propagate its signal. In the video above, we consider a modified activator branch that creates a delay. Note: the input into the branch (formerly  B ) is now represented by  R2  to emphasize that the input into the cascade is a repressor rather than an activator.
+
+#### Cascades wrap-up
+
+In this paper, the researchers built a classifier circuit to determine if cells are HeLa or not. The core functionality of this circuit is RNA interference, a phenomena seen in most eukaryotic cells. This circuit will be discussed more in depth later in the course when we talk about RNA circuits.
+
+The classifier works by using microRNA (miRNA) as biomarkers to directly repress circuit elements. If any marker miRNAs are high in the cell, they will bind target mRNA in the circuit, repressing translation and facilitating mRNA degradation. The researchers identified two sets of miRNAs: "low" and "high".
+
+"Low" miRNAs were identified as being expressed lowly in HeLa cells but not other cell types.
+Conversely, "high" miRNAs are high in HeLa cells but not in others.
+
+First, Ron discussed how the HeLa classifier has been adapted for a breast cancer model and is being used to drive replication of the oncolytic herpes simplex virus (HSV)-1.
+
+What we alluded to in the previous segment was a hazard in the HeLa classifier. In mismatched cells, the high miRNAs will not be high, and thus the repressor will be expressed and repress the output. However, as we have seen before, repression cascades can lead to a hazard because the initial levels of the repressor are low. Thus, to improve the circuit, the researchers added an activation element to the circuit and a hybrid promoter for the output, similar to what we did in the previous section with our generic classifier.
+
+### Feed-forward motifs
+
+**Feed-forward** circuits have a network structure in which some starting node initiates a signal through multiple branches that later converge. This allows for the generation of pulses as well as other interesting behavior. This will be the main topic of Lecture 12.
+
+**Toggles** are systems that can switch between two or more states. Toggles allow us to store memory of the last input that the system was given. An important aspect of toggle switches is the stability of their switchable states, particularly with respect to biological noise. This will be the topic of Lecture 13.
+
+**Oscillators** are important circuits that have a periodic nature. The output of these devices increases and decreases over time, leading to interesting sinusoidal-like behavior. Oscillators are particularly important for timing and creating clocks. This will be the topic of Lectures 14 and 15.
+
+#### Engineering Pulse Characteristics
+
+In this segment, Ron discussed the experimental data for the pulse generator system and a model for the pulse characteristics. The experimental data (presented in the left panel) is the result of testing several different pulse generator constructs. High-throughput genetic assembly methods allow the creation of many circuit variants, which -- due to the current uncertainty in biological system design -- is one of the best ways to get functional genetic circuits.
+
+Two aspects of the pulse response were emphasized: the amplitude (or gain) and duration. The initial design that was attempted showed no pulse response at all. In order to understand why, the researchers built a mathematical model to describe the system, and ultimately used it to identify the key parameters affecting the pulse gain. The pulse gain is the amplitude of the pulse response relative to the background levels of  GFP  (averaged for all cells).
+
+### Nature's devices
+
+In the "development" of regulatory networks in cells, the designer is evolution. We know that due to the driver of natural selection / survival of the fittest, organisms are not composed of completely random networks; the constant pressure to survive and be efficient means that only certain network structures are selected for or **enriched**. We seek to identify these common patterns of network connections (topologies) because they are likely to have useful functionalities.
+
+So far, there have been two major approaches to studying regulatory networks in cells. In the **bottom-up** or reductionist approach, knockout or overexpression of particular elements is performed to study the relative increase/decrease in expression of downstream elements in a pathway or interaction network. So if we wanted to understand the interaction between  X  and  Y , we could knockout  X  and observe the expression of  Y . If  Y  increased in its expression, then we could hypothesize that  X⊣Y .
+
+#### Coherent feed-forward loops (cFFLs)
+
+Let us define a feed-forward loop as a network motif where one node regulates two or more branches that later converge at a downstream node. Simply put, feed-forward loops are defined by multiple edges or unique paths connecting two nodes. In their work, Shmoolik and Uri classified all different types of FFLs with three elements (the simplest possible FFLs).
+
+Coherent feed-forward loops (cFFLs) are FFLs with consistent logic from one branching node to the other. That is: if one branch is outputting a "HIGH" signal, the other branch should also ultimately produce a "HIGH" signal (or both branches produce a "LOW" signal). Let's examine a couple of the coherent FFLs in the segment video above to cement this notion. 
+
+#### Incoherent feed-forward loops (iFFLs)
+
+In this segment, we discuss incoherent feed-forward loops (iFFLs). In these circuits, the signal through different arms have opposing effects on the output. For iFFLs, we will only look at AND logic at the convergence point, but note that using an OR gate will have the interesting effect of making the steady-state always be on instead of off.
+
+### Modeling a cFFL
+
+As we have seen in the examples above, the biggest uses of cFFLs are noise rejection and delay. But what do we need for these functions? First, we need sigmoidy in transfer functions for all activation and repression relationships. This makes the response of  C  to  B  be ~zero for low expression values of  B . Small variation in  A  will then not cause  C  to be expressed, because it will not sufficiently activate  B .
+
+In this segment, Adam wraps up the discussion of FFLs with some thoughts about motifs, which will lead us into the next exciting topic — the toggle switch!
+
+### Segue: motifs
+
+Why do certain motifs appear more often than random? There may be some functional reason evolution has selected for FFLs, such as useful functionality. In addition, it is possible that FFLs are "easily findable" in evolution's methods to solve a problem, such as energy consumption optimization. We must remember that there is always an element of bias in the randomness of biology that is difficult to predict. It is possible that FFLs are not particularly noteworthy in biology, and just by chance cells happen to make these motifs more than what we think is random.
