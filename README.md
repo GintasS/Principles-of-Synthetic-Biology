@@ -158,7 +158,7 @@ For a promoter to wholly encapsulate its function, it must be true that it can b
 
 Ideally, we would have things like expression cassettes, which can be insulated from each other and are comprised of all the things we need to regulate a gene and the gene itself. Each component would be chosen from a library of characterized elements to suit our needs, regardless of the context.
 
-- Completenesss: I can make any function.
+- Completeness: I can make any function.
 - Scalability: I can make complex circuits.
 - Homogeneity: I can measure once, and it applies to the whole family.
 - Composability: There are standards for part connection such that unit function is maintained or predictable modified upon attachment.
@@ -177,7 +177,7 @@ Why can we make abstractions when modeling biochemical systems? When we think ab
 
 To define what a part means, let's look at what a designed system — which we will want to use parts in — does. Any design moves the system through a programmed series of states. This progression is the result of many elementary processes and functions working together. Hence, it is useful to define a part as being one of these processes (functions), instead of some physical element such as a molecule or piece of DNA.
 
-**The state of a system can be described chemically,** for example how many molecules of something there are, and where they are; what the temperature at some particular location is; what the volume of some cell compartment is. The state of a whole system could thus be described as a vector containing these numbers. **Processes — our parts — change this state by converting molecules, creating new ones, destroying them or transporting them.**
+**The state of a system can be described chemically,** for example, how many molecules of something there are, and where they are; what the temperature at some particular location is; what the volume of some cell compartment is. The state of a whole system could thus be described as a vector containing these numbers. **Processes — our parts — change this state by converting molecules, creating new ones, destroying them or transporting them.**
 
 **See Images in Week 3.** 
 
@@ -253,7 +253,7 @@ Perhaps the easiest mammalian cell property to measure is RNA-related and protei
 
 In reality, we only need about 3-5 genes differentially expressed in cancer and healthy cells to tell the difference.
 
-One important question to ask is what does high vs low mean, especially in the context of differential gene expression in a disease such as cancer? There is absurd heterogeneity in cancer. Between two people with the same type of cancer, the profiles of gene expression between their cancers can be wildly different for many proteins. Even cells that are both a part of the **same tumor** can have wildly different expression levels! This presents a problem when attempting to detect cancer biomarkers, and is something that we have to consider when designing circuits to do multi-input sensing.
+One important question to ask is what does high vs low means, especially in the context of differential gene expression in a disease such as cancer? There is absurd heterogeneity in cancer. Between two people with the same type of cancer, the profiles of gene expression between their cancers can be wildly different for many proteins. Even cells that are both a part of the **same tumor** can have wildly different expression levels! This presents a problem when attempting to detect cancer biomarkers and is something that we have to consider when designing circuits to do multi-input sensing.
 
 Typically, we can take a 10-fold change from normal is a good metric for minimum difference between a "normal" and transformed gene state. While this is generally a large enough difference, we really need to consider the **mean and variance** of expression in as many cells as possible in tumors from different people. If a 10-fold increase in expression is within the normal range of gene expression for a healthy adult, then we will need our biomarker threshold to, say, 100-fold above normal.
 
@@ -267,7 +267,7 @@ If a certain branch is too fast, we can add more activators in series to delay t
 
 In this paper, the researchers built a classifier circuit to determine if cells are HeLa or not. The core functionality of this circuit is RNA interference, a phenomenon seen in most eukaryotic cells. This circuit will be discussed more in depth later in the course when we talk about RNA circuits.
 
-The classifier works by using microRNA (miRNA) as biomarkers to directly repress circuit elements. If any marker miRNAs are high in the cell, they will bind target mRNA in the circuit, repressing translation and facilitating mRNA degradation. The researchers identified two sets of miRNAs: "low" and "high".
+The classifier works by using microRNA (miRNA) as biomarkers to directly repress circuit elements. If any marker miRNAs are high in the cell, they will bind target mRNA in the circuit, repressing translation and facilitating mRNA degradation. The researchers identified two sets of miRNAs: "low" and "high."
 
 "Low" miRNAs were identified as being expressed lowly in HeLa cells but not other cell types.
 Conversely, "high" miRNAs are high in HeLa cells but not in others.
